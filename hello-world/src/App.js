@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 // class App extends Component {
 //   render() {
@@ -67,34 +67,66 @@ import PropTypes from 'prop-types';
 //   )
 // }
 
-const App = () =>{
-  const profiles = [
-    {name:"Taro", age:10},
-    {name:"Hanako", age:5},
-    {name:"Noname", age:3}
-  ]
-  return (
-    <div>
-      {
-        profiles.map((profile, index) => {
-          return <User name={profile.name} age={profile.age} key={index} />
-        })
-      }
-    </div>
-  )
-}
+// const App = () =>{
+//   const profiles = [
+//     {name:"Taro", age:10},
+//     {name:"Hanako", age:5},
+//     {name:"Noname", age:3}
+//   ]
+//   return (
+//     <div>
+//       {
+//         profiles.map((profile, index) => {
+//           return <User name={profile.name} age={profile.age} key={index} />
+//         })
+//       }
+//     </div>
+//   )
+// }
 
-const User = (props) =>{
-  return <div>Hi! I am {props.name}, and {props.age} years old! </div>
-}
+// const User = (props) =>{
+//   return <div>Hi! I am {props.name}, and {props.age} years old! </div>
+// }
 
-User.PropTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired
-}
+// User.PropTypes = {
+//   name: PropTypes.string,
+//   age: PropTypes.number.isRequired
+// }
 
 // User.defaultProps = {
 //   age:1
 // }
+
+const App = () =>(<Counter></Counter>)
+
+class Counter extends Component {
+  constructor(props){
+    super(props)
+    this.state =  {count:0}
+  }
+
+  hundlePlusButton = () => {
+    // console.log("hundlePlusButton")
+    // console.log(this.state.count)
+    // const currentCount =this.state.count
+    // this.setState({count: currentCount + 1})
+    this.setState({count: this.state.count + 1})
+  }
+
+  hundleMinusButton = () => {
+    this.setState({count: this.state.count - 1})
+  }
+
+  render(){
+    console.log("render");
+    return(
+      <React.Fragment>
+        <div>count: {this.state.count}</div>
+        <button onClick={this.hundlePlusButton}>+1</button>
+        <button onClick={this.hundleMinusButton}>-1</button>
+      </React.Fragment>
+    )
+  }
+}
 
 export default App;
